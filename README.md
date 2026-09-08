@@ -5,7 +5,12 @@
 A production-ready business intelligence web application designed to transform **175,000+ e-commerce transaction records** into actionable, executive-level metrics. 
 
 ### 📸 Dashboard Preview
-*(Add a screenshot of your dashboard here later!)*
+<img width="1905" height="787" alt="image" src="https://github.com/user-attachments/assets/e60ec788-9864-43da-a1a6-6ddb20bb4f1c" />
+<img width="1486" height="542" alt="image" src="https://github.com/user-attachments/assets/b09172a1-0472-4d99-8962-a9f52eead128" />
+<img width="1492" height="481" alt="image" src="https://github.com/user-attachments/assets/d2321671-b7c0-4308-b412-95ca7e0b14ea" />
+<img width="1411" height="385" alt="image" src="https://github.com/user-attachments/assets/30c1e666-3cf2-41f8-9880-fa02810aa047" />
+
+
 
 ---
 
