@@ -32,4 +32,4 @@ A production-ready business intelligence web application designed to transform *
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/ShashwatMisra008/Amazon-E-Commerce-Executive-Dashboard.git](https://github.com/ShashwatMisra008/Amazon-E-Commerce-Executive-Dashboard.git)
+git clone https://github.com/ShashwatMisra008/Amazon-E-Commerce-Executive-Dashboard.git
