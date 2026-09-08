@@ -10,8 +10,6 @@ A production-ready business intelligence web application designed to transform *
 <img width="1492" height="481" alt="image" src="https://github.com/user-attachments/assets/d2321671-b7c0-4308-b412-95ca7e0b14ea" />
 <img width="1411" height="385" alt="image" src="https://github.com/user-attachments/assets/30c1e666-3cf2-41f8-9880-fa02810aa047" />
 
-
-
 ---
 
 ### 🚀 Business Impact & Features
@@ -32,4 +30,4 @@ A production-ready business intelligence web application designed to transform *
 
 1. **Clone the repository:**
    ```bash
-git clone https://github.com/ShashwatMisra008/Amazon-E-Commerce-Executive-Dashboard.git
+   git clone [https://github.com/ShashwatMisra008/Amazon-E-Commerce-Executive-Dashboard.git](https://github.com/ShashwatMisra008/Amazon-E-Commerce-Executive-Dashboard.git)
