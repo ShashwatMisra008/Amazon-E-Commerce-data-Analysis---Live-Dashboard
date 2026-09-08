@@ -1,20 +1,30 @@
-# Amazon E-Commerce Executive Intelligence Hub
+# 🛒 Amazon E-Commerce Executive Intelligence Hub
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-name.streamlit.app)
+[![Live App](https://img.shields.io/badge/Live_App-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit)](https://amazon-e-commerce-data-analysis---live-dashboard-ejfcuxjnxrfky.streamlit.app/)
 
-## Business Context & Objectives
-The **Amazon E-Commerce Executive Intelligence Hub** is a production-ready, interactive analytics application designed to bridge the gap between raw transactional data and strategic decision-making. Built to assist executive leadership, this dashboard processes over 175,000 optimized transactional records to surface critical insights regarding segment profitability, brand distribution, pricing dynamics, and supply chain risks. 
+A production-ready business intelligence web application designed to transform **175,000+ e-commerce transaction records** into actionable, executive-level metrics. 
 
-## Tech Stack
+### 📸 Dashboard Preview
+*(Add a screenshot of your dashboard here later!)*
+
+---
+
+### 🚀 Business Impact & Features
+* **Executive Overview:** Real-time tracking of Gross Merchandise Value (GMV), Total Revenue, and Net Margins.
+* **Diagnostic Analytics:** Built on a multi-tab diagnostic framework (Issue → Effect → Cause → Solution) to isolate operational bottlenecks.
+* **Brand Matrix:** Deep-dive analysis into brand concentration, discount efficiency, and category-level performance.
+* **Pricing Optimization:** Data-driven insights identifying optimal discount thresholds to maximize profitability without eroding margins.
+
+### 🛠️ Technical Stack
 * **Language:** Python
-* **Data Processing & Manipulation:** Pandas
-* **Data Visualization:** Plotly & Plotly Express
-* **Web Application Framework:** Streamlit
-* **Deployment & Hosting:** Streamlit Cloud & GitHub
-* **Data Ingestion & Cleaning:** Google Colab
+* **Web Framework:** Streamlit
+* **Data Manipulation:** Pandas, NumPy
+* **Data Visualization:** Plotly Express, Matplotlib
 
-## Key Features
-* **Interactive Executive Slicers:** Dynamic sidebar filters allowing users to slice data seamlessly across specific categories, subcategories, and brands.
-* **Multi-Tab Diagnostic Architecture:** Structured analytical tabs evaluating brand intelligence, pricing sensitivities, and merchant quality metrics.
-* **Issue → Effect → Cause → Solution Framework:** Actionable diagnostic cards built directly into each tab to guide leadership on operational fixes and margin protections.
-* **Core Financial KPI Grid:** High-level summary metrics tracking Total GMV, transaction volume, average ticket size, and marketplace ratings in real-time.
+---
+
+### 💻 How to Run Locally
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/ShashwatMisra008/Amazon-E-Commerce-Executive-Dashboard.git](https://github.com/ShashwatMisra008/Amazon-E-Commerce-Executive-Dashboard.git)
