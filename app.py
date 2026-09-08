@@ -2,14 +2,14 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# 1. Page Configuration & Header Fix (Increased padding to prevent title clipping)
+# 1. Page Configuration & Layout Optimization
 st.set_page_config(page_title="CEO E-Commerce Executive Briefing", layout="wide")
 
 st.markdown("""
     <style>
-        .block-container { padding-top: 3.5rem; padding-bottom: 0rem; }
-        h1 { font-size: 1.4rem !important; margin-bottom: 0.5rem !important; color: #2c3e50; }
-        .rec-box { background-color: #f8f9fa; padding: 12px; border-radius: 6px; border-left: 4px solid #008080; font-size: 0.8rem; height: 100%; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .block-container { padding-top: 2.5rem; padding-bottom: 0rem; }
+        h1 { font-size: 1.4rem !important; margin-bottom: 0.3rem !important; color: #2c3e50; }
+        .rec-box { background-color: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid #008080; font-size: 0.78rem; height: 100%; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
     </style>
 """, unsafe_allow_html=True)
 
@@ -49,24 +49,41 @@ col4.metric("Marketplace Rating", f"{avg_rating:.2f} ⭐")
 
 st.markdown("---")
 
-# 5. Visualizations Side-by-Side
+# 5. Advanced Interactive Visualizations with Deep Insights
 chart_col1, chart_col2 = st.columns(2)
 
 with chart_col1:
-    st.subheader("🏆 Top Revenue Generating Brands")
-    top_brands = df_f.groupby('brand')['final_price'].sum().reset_index().sort_values(by='final_price', ascending=False).head(5)
-    fig_brand = px.bar(top_brands, x='final_price', y='brand', orientation='h', color='final_price', color_continuous_scale='Teal', template='plotly_white')
-    fig_brand.update_layout(yaxis={'categoryorder':'total ascending'}, height=180, margin=dict(t=5, b=5, l=5, r=5), showlegend=False)
-    st.plotly_chart(fig_brand, use_container_width=True)
+    st.subheader("📊 Brand Revenue vs. Average Rating Matrix")
+    # Group by brand to show revenue and quality relationship
+    brand_perf = df_f.groupby('brand').agg({'final_price': 'sum', 'rating': 'mean', 'product_id': 'count'}).reset_index()
+    brand_perf = brand_perf.sort_values(by='final_price', ascending=False).head(10)
+    
+    fig_scatter = px.scatter(
+        brand_perf, x='final_price', y='rating', size='product_id', color='brand',
+        template='plotly_white', hover_name='brand',
+        labels={'final_price': 'Total Revenue ($)', 'rating': 'Avg Rating (⭐)', 'product_id': 'Catalog Size'}
+    )
+    fig_scatter.update_layout(height=190, margin=dict(t=5, b=5, l=5, r=5), showlegend=False)
+    st.plotly_chart(fig_scatter, use_container_width=True)
 
 with chart_col2:
-    st.subheader("📦 Revenue Breakdown by Category")
-    top_cats = df_f.groupby('category')['final_price'].sum().reset_index().sort_values(by='final_price', ascending=False).head(5)
-    fig_cat = px.pie(top_cats, names='category', values='final_price', hole=0.5, template='plotly_white', color_discrete_sequence=px.colors.qualitative.Pastel)
-    fig_cat.update_layout(height=180, margin=dict(t=5, b=5, l=5, r=5))
-    st.plotly_chart(fig_cat, use_container_width=True)
+    st.subheader("📦 Subcategory Margin & Discount Sensitivity")
+    # Group by subcategory to show price vs discount correlation
+    if 'subcategory' in df_f.columns:
+        subcat_perf = df_f.groupby('subcategory').agg({'final_price': 'mean', 'discount': 'mean', 'review_count': 'sum'}).reset_index()
+        subcat_perf = subcat_perf.sort_values(by='final_price', ascending=False).head(8)
+        
+        fig_bubble = px.bar(
+            subcat_perf, x='subcategory', y='final_price', color='discount',
+            color_continuous_scale='Teal', template='plotly_white',
+            labels={'final_price': 'Avg Ticket ($)', 'discount': 'Avg Discount (%)', 'subcategory': 'Subcategory'}
+        )
+        fig_bubble.update_layout(height=190, margin=dict(t=5, b=5, l=5, r=5))
+        st.plotly_chart(fig_bubble, use_container_width=True)
+    else:
+        st.info("Subcategory details unavailable.")
 
-# 6. Recommendations Backed by Quantitative Insights
+# 6. Strategic Recommendations Backed by Granular Data
 st.markdown("**💡 Data-Backed Executive Recommendations & Insights**")
 
 rec1, rec2, rec3 = st.columns(3)
@@ -75,8 +92,8 @@ with rec1:
     st.markdown(f"""
         <div class="rec-box">
             <b>🚀 1. Scale Top Brand Partnerships</b><br>
-            <b>Data Insight:</b> Anchors like LG and Nike consistently drive over $145M+ individually.<br>
-            <b>Action:</b> Prioritize co-op marketing and prime search placements to maximize high-conversion revenue streams.
+            <b>Data Insight:</b> High-revenue brands maintain superior catalog concentration and customer trust.<br>
+            <b>Action:</b> Prioritize co-op marketing and prime search placements for top-tier volume drivers.
         </div>
     """, unsafe_allow_html=True)
 
@@ -84,7 +101,7 @@ with rec2:
     st.markdown(f"""
         <div class="rec-box">
             <b>⚠️ 2. Mitigate Quality & Churn Risks</b><br>
-            <b>Data Insight:</b> Marketplace health averages <b>{avg_rating:.2f} ⭐</b>, but tail-end product lines dip below 3.5 ⭐.<br>
+            <b>Data Insight:</b> Marketplace health averages <b>{avg_rating:.2f} ⭐</b>, highlighting segments vulnerable to drop-offs.<br>
             <b>Action:</b> Enforce automated supplier quality thresholds to protect brand equity and lower return liabilities.
         </div>
     """, unsafe_allow_html=True)
@@ -93,7 +110,7 @@ with rec3:
     st.markdown(f"""
         <div class="rec-box">
             <b>📊 3. Restructure Discount Architecture</b><br>
-            <b>Data Insight:</b> Current catalog discounting averages <b>{avg_disc:.1f}%</b> across inventory pools.<br>
+            <b>Data Insight:</b> Catalog discounting averages <b>{avg_disc:.1f}%</b>, impacting unit margin realization.<br>
             <b>Action:</b> Restrict blanket markdowns on slow movers; transition to bundle cross-selling to safeguard operating margins.
         </div>
     """, unsafe_allow_html=True)
