@@ -17,7 +17,7 @@ total_rev = df['final_price'].sum()
 total_orders = len(df)
 avg_price = df['final_price'].mean()
 
-col1, col2, col3 = st.cols(3)
+col1, col2, col3 = st.columns(3)
 col1.metric("Total GMV", f"${total_rev:,.2f}")
 col2.metric("Total Orders", f"{total_orders:,}")
 col3.metric("Avg Final Price", f"${avg_price:,.2f}")
